@@ -1820,3 +1820,4 @@ export const IMG_CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lo
     },
 
 ];
+
