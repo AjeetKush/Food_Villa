@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namaste React</title>
+
+    
+</head>
+<body>
+    
+    <div id="root">
+       <!-- <h1>Hello World from HTML!</h1> -->
+    </div>
+
+    <!-- <script>
+      const heading = document.createElement("h1"); // by this we are creating h1 tag and we just put this tag in constant variable i.e heading.
+
+      //  now let us put hello world inside this heading.
+       heading.innerHTML = "Hello World from javascript!";
+
+       // now we have to put our heading inside the root using javascript. so first of all we will find where is my root.
+
+       const root = document.getElementById("root"); // we got the root. So, basically this root variable got the reference to the div tag which has id as root.
+
+       // now we have to put this heading inside the div tag which has id as root. how we will do that? there is a function inside javascript which is known as append child.
+
+       root.appendChild(heading); // heading will go as a child inside the root.
+    </script> -->
+
+
+
+    <!-- using these links, now we have react inside it. Now we have super power of react inside it. We just injected react into our projects, it is the first way to inject project inside the project. -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script>
+        // how to create h1 tag using react
+
+        const heading = React.createElement("h1", {}, "Hello World from React!");
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+
+        root.render(heading);
+
+    </script>
+</body>
+</html>
