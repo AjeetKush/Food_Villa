@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Namaste React</title>
+    <link rel="stylesheet" href="./style.css">
 
     
 </head>
@@ -12,7 +13,8 @@
     <div id="root">
        <!-- <h1>Hello World from HTML!</h1> -->
     </div>
-
+   
+    <!-- we want to inject heading h1 inside the root using javascript -->
     <!-- <script>
       const heading = document.createElement("h1"); // by this we are creating h1 tag and we just put this tag in constant variable i.e heading.
 
@@ -30,19 +32,119 @@
 
 
 
-    <!-- using these links, now we have react inside it. Now we have super power of react inside it. We just injected react into our projects, it is the first way to inject project inside the project. -->
+    <!-- using these links, now we have react inside it. Now we have super power of react inside it. We just injected react into our projects, it is the first way to inject React.js inside our project. -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
-    <script>
-        // how to create h1 tag using react
+    <script src="./app.js">
+        // // How to create h1 tag and that "hello world" using react inside that div route.
 
-        const heading = React.createElement("h1", {}, "Hello World from React!");
+        // const heading = React.createElement("h1", {}, "Hello World from React!"); // this is how we create h1 TAG inside react.
+         
 
-        const root = ReactDOM.createRoot(document.getElementById("root"));
+        // const root = ReactDOM.createRoot(document.getElementById("root")); // this root is the place where whole react code will run inside react. Everything that we will render we will render on that root.
 
-        root.render(heading);
+        // root.render(heading);
 
     </script>
 </body>
 </html>
+
+<!-- 
+
+Things to remember while learning from this course:-
+
+     1) Make your own notes.
+
+     2) Use Laptop/Desktop and try to code along.{ Learn from Videos and Apply that Knowledge to gain insights by trial and error. Kewal dekhne se nahi hoga... you need to do it on your own.} 
+
+     3) Maintain your own G ithub repo and keep logging whatever you are learning in this course.
+
+ -->
+
+ <!-- React.createElement() basics of it.
+
+
+      In React, the React.createElement function is a fundamental building block used to create React elements. It is often used when writing JSX is not an option or when you want to dynamically create React elements in JavaScript. JSX is a syntactic sugar over React.createElement, and when you write JSX code, it is transpiled into calls to React.createElement.
+
+
+      The basic syntax of React.createElement is as follows:-
+
+
+      React.createElement(type, [props], [...children]);
+
+
+      1} type: Represents the type of the element to create. It can be a string representing an HTML tag name (e.g., 'div', 'span'), a reference to a React component class, or a React functional component.
+
+      2} props: An optional object that contains properties or attributes for the element.// it is optional so that means we can keep it empty also.
+
+      3} children: Additional arguments representing the child elements of the current element.
+
+
+       Here's an example of using React.createElement to create a simple element:
+
+
+       const element = React.createElement('div', { className: 'my-class' }, 'Hello, React!');
+
+
+       In this example:
+
+       The type is 'div', representing the HTML tag.
+       The props object contains a className property.
+       The child of the div element is the string 'Hello, React!'.
+
+       The element variable now holds a React element, and you can render it to the DOM using ReactDOM:
+
+       ReactDOM.render(element, document.getElementById('root'));
+
+       {
+
+           We can write this above line of code in 2 lines:--
+
+           const rootElement = document.getElementById('root'); // React need root to do all DOM manipulation.
+           ReactDOM.render(element, rootElement); 
+
+           In these two lines:-
+
+           1} The first line retrieves the DOM element with the id 'root' and stores it in the variable rootElement.
+
+           2} The second line renders the React element (element) into the DOM element obtained in the first line (rootElement).
+
+
+           OR
+
+
+           const rootElement = document.getElementById('root');
+
+           const root = ReactDOM.createRoot(rootElement);
+
+           root.render(element);
+
+
+
+
+           Here's a breakdown of the code:-
+
+           1} The first line retrieves the DOM element with the id 'root' and stores it in the variable rootElement.
+
+           2} The second line creates a root using ReactDOM.createRoot and associates it with the DOM element obtained in the first line (rootElement).
+
+           3} The third line renders the React element (element) into the root using the render method of the created root.
+
+
+           Using createRoot is beneficial when working with concurrent mode features in React. It allows for more fine-grained control over rendering and updating in situations where the rendering process might be interrupted or prioritized differently. Keep in mind that concurrent mode features are often used in more complex applications where managing rendering priorities becomes crucial. For simpler applications, using ReactDOM.render might be sufficient.
+
+
+       }
+      
+
+       In JSX, the above code could be expressed more succinctly:
+
+       const element = <div className="my-class">Hello, React!</div>;
+       
+       The JSX code is easier to read and write, but under the hood, it gets transformed into the equivalent React.createElement calls during the compilation process.
+
+       Understanding React.createElement is essential for grasping the internals of React and for scenarios where JSX is not directly applicable, such as when working with dynamic components or constructing elements programmatically. However, in most cases, developers prefer using JSX for its readability and conciseness.
+
+
+-->
