@@ -6,7 +6,8 @@ const RestaurantCard = (props) => {
 
     const { resData } = props;
 
-    const {name,cuisines,avgRating,costForTwo,deliveryTime,cloudinaryImageId} = resData?.info;
+    const {name,cuisines,avgRating,costForTwo,cloudinaryImageId} = resData?.info;
+    const { deliveryTime } = resData?.info?.sla;
    // console.log(props); props normal js object baan ke pass hote hai... { From parent component to child component. }
     return (
       <div className="res-card"  style={{ backgroundColor: "#f0f0f0"}}>
