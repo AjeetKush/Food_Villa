@@ -1,7 +1,7 @@
 import RestaurantCard from "./RestaurantCard"; 
 import { useState, useEffect } from "react";       
 import Shimmer from "./Shimmer";
-
+import { Link } from "react-router-dom";
 const Body = () => {
 
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -16,7 +16,7 @@ const Body = () => {
     
     const fetchData = async () => {
 
-        const data = await fetch("https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.626539179755998&lng=77.2992504760623&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");// this fetch will fetch the data from the API, fetch returns a promise and to resolve a promise we will use Async - Await here.... hum .then .catch use kar sakte the... but hum wo use nahi karenge...
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.626539179755998&lng=77.2992504760623&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");// this fetch will fetch the data from the API, fetch returns a promise and to resolve a promise we will use Async - Await here.... hum .then .catch use kar sakte the... but hum wo use nahi karenge...
 
         // once we have the data we want to convert that data to JSON.
 
@@ -100,7 +100,7 @@ const Body = () => {
 
                       {
                             filteredRestaurant?.map((restaurant) => (
-                                    <RestaurantCard key = {restaurant.info.id} resData={restaurant}/>
+                                  <Link  key = {restaurant.info.id} to={"/restaurants/"+restaurant.info.id }><RestaurantCard  resData={restaurant}/></Link>
                             ))
                       }
                        
