@@ -52,33 +52,30 @@ const Body = () => {
         return <Shimmer />;
     }
     
-   // conditional rendering { read about it... interview me as a jargon puch sakte hai...}
-
-    // if(listOfRestaurants.length === 0){
-
-    //    return <h1>Loading......</h1>
-    // }
-
-    // if(listOfRestaurants.length === 0){ // until this is true.... API has not responded with the data from the backend. So, tab tak ke liye.... aap shimmer UI show karo...
-
-    //     return <Shimmer />
-    //  }
- 
-    
-
     console.log(searchText);
     return (
 
             <div className="body">
-                    <div className="filter">
+                    <div className="filter flex">
                         
-                        <div className="search">
+                        <div className="search p-4 flex items-center">
 
-                        <input type="text" className="search-box" value={searchText} onChange={(e)=>{
+                        <div  className="search m-4 p-4">
+                              
+                              <input type="text" placeholder = "Search here" className="border border-solid border-black px-1 rounded-md " value={searchText} onChange={(e)=>{
                             setSearchText(e.target.value);
 
                         }}></input>
-                        <button onClick={()=>{
+
+
+                        </div>
+
+                        <div className="search m-4 p-4">
+                              
+
+                           <button className="px-4 py-1 bg-green-200 m-4 rounded-lg"
+                        
+                        onClick={()=>{
                             // Filter the restaurant card and Update the UI on click of this button 
                             // we need searchText here, whatever we wrote in the input box.
                            
@@ -94,8 +91,13 @@ const Body = () => {
 
                         </div>
                         
+                       
+
                         
-                        <button className="filter-btn" onClick={()=>{
+
+                        <div className="search m-4 p-4">
+                              
+                              <button className="filter-btn px-4 py-1 bg-gray-200 rounded-lg" onClick={()=>{
                             // filter logic here
 
                             const filteredList = listOfRestaurants.filter( res  => res.info.avgRating > 4);
@@ -104,11 +106,24 @@ const Body = () => {
 
                         }}>Top Rated Restaurant </button>
 
-                        <button onClick={()=>{
-                          setFilteredRestaurant(listOfRestaurants);
-                        }}>Reset Filter</button>
+                        </div>
+                        
+                        <div className="search m-4 p-4">
+                               <button className="reset-filter-btn px-4 py-1 bg-gray-200 rounded-lg"
+                        
+                                 onClick={()=>{ 
+                                 setFilteredRestaurant(listOfRestaurants);
+                               }}>Reset Filter</button>
+
+                        </div>
+                        
+
                     </div>
-                    <div className="res-container">
+
+                  </div>  
+
+
+                    <div className="res-container flex flex-wrap">
 
                       {
                             filteredRestaurant?.map((restaurant) => (
