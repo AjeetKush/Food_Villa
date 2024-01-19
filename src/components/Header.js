@@ -1,14 +1,19 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
 
 
     const [btnName, setBtnName ] = useState("Login");
 
-    const onlineStatus = useOnlineStatus()
+    const onlineStatus = useOnlineStatus();
+
+    const data = useContext(UserContext); // UserContext ka data, data variable me aa gaya.
+
+    const { loggedInUser } = data;// extracted oggedInUser from data.
 
     useEffect( ()=> {}, []);
 
@@ -33,6 +38,8 @@ const Header = () => {
                             <button className="login" onClick={()=>{
                                btnName == "Login" ? setBtnName("Logout") : setBtnName("Login");
                             }}>{btnName}</button>
+
+                            <li className="px-4 font-bold">{loggedInUser}</li>
                     </ul>
 
             </div>

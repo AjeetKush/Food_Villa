@@ -8,6 +8,7 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Footer from "./components/Footer"
 // import Grocery from "./components/Grocery";
 
 // lary is a function given to us by react. 
@@ -23,6 +24,7 @@ const AppLayout = () => {
                         <Header />
 
                        <Outlet />
+                       <Footer />
                 </div>
 
         );

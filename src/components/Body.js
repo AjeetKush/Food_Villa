@@ -1,8 +1,11 @@
-import RestaurantCard from "./RestaurantCard"; 
+import RestaurantCard, { withHighRating } from "./RestaurantCard"; 
 import { useState, useEffect } from "react";       
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import Shimmer from './Shimmer'; // Adjust the path accordingly
+import Footer from './Footer';   // Adjust the path accordingly
+
 const Body = () => {
 
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -11,22 +14,26 @@ const Body = () => {
 
     const [searchText, setSearchText] = useState("");
 
+    const HighRatedRestaurantCard = withHighRating(RestaurantCard); // with this line we have created the Restaurant card which has the lable of 4.3 stars plus on it. withHighRating is a HOC and we have passed RestaurantCard component into it and it return a new component which has lable of 4.3 stars plus on it.
+
+    // console.log(listOfRestaurants);
+
     useEffect(()=>{
         fetchData();
     }, []);
     
     const fetchData = async () => {
 
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.626539179755998&lng=77.2992504760623&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");// this fetch will fetch the data from the API, fetch returns a promise and to resolve a promise we will use Async - Await here.... hum .then .catch use kar sakte the... but hum wo use nahi karenge...
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");// this fetch will fetch the data from the API, fetch returns a promise and to resolve a promise we will use Async - Await here.... hum .then .catch use kar sakte the... but hum wo use nahi karenge...
 
         // once we have the data we want to convert that data to JSON.
 
         const json = await data.json();
 
-        //console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        //console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
-        setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
      
 
         
@@ -49,7 +56,13 @@ const Body = () => {
     
 
     if(listOfRestaurants?.length === 0 ){ 
-        return <Shimmer />;
+        return (
+        <>
+                  <Shimmer />
+                   
+        </>
+       
+       );
     }
     
     console.log(searchText);
@@ -100,7 +113,7 @@ const Body = () => {
                               <button className="filter-btn px-4 py-1 bg-gray-200 rounded-lg" onClick={()=>{
                             // filter logic here
 
-                            const filteredList = listOfRestaurants.filter( res  => res.info.avgRating > 4);
+                            const filteredList = listOfRestaurants.filter( res  => res.info.avgRating >= 4.3);
                             
                             setFilteredRestaurant(filteredList);
 
@@ -127,7 +140,17 @@ const Body = () => {
 
                       {
                             filteredRestaurant?.map((restaurant) => (
-                                  <Link  key = {restaurant.info.id} to={"/restaurants/"+restaurant.info.id }><RestaurantCard  resData={restaurant}/></Link>
+                                  <Link  key = {restaurant.info.id} to={"/restaurants/"+restaurant.info.id }>
+                                    
+                                    {/* we wiil render all the restaurant card but if the Restaurant card is 4.3 star and + we will add a lable onto it.  */}
+                                    { 
+                                    
+                                    restaurant.info.avgRating >= 4.3 ? (<HighRatedRestaurantCard resData={restaurant}/> ): ( <RestaurantCard  resData={restaurant}/> )
+                                    
+                                    }
+                                  
+                                  
+                                  </Link>
                             ))
                       }
                        
