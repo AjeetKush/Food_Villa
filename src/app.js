@@ -22,9 +22,8 @@ const AppLayout = () => {
 
                 <div className="app">
                         <Header />
-
-                       <Outlet />
-                       <Footer />
+                        <Outlet />
+                        <Footer />
                 </div>
 
         );
@@ -65,23 +64,6 @@ const appRouter = createBrowserRouter([
         
        
 ]);
-
-// const appRouter = createBrowserRouter([
-//         {
-//              path: "/",
-//              element: <AppLayout />,
-//              errorElement: <Error />
-//         },
-//         {
-//                 path: "/about",
-//                 element: <About />
-//         },
-//         {
-//                 path: "/contact",
-//                 element: <Contact />
-//         },
-       
-// ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import Shimmer from './Shimmer'; // Adjust the path accordingly
-import Footer from './Footer';   // Adjust the path accordingly
+
+
 
 const Body = () => {
 
@@ -55,15 +55,13 @@ const Body = () => {
     
     
 
-    if(listOfRestaurants?.length === 0 ){ 
-        return (
-        <>
-                  <Shimmer />
-                   
-        </>
-       
-       );
-    }
+   if (listOfRestaurants?.length === 0) {
+  return (
+    <>
+      <Shimmer />  {/* Rendering the Shimmer component */}
+    </>
+  );
+}
     
     console.log(searchText);
     return (
