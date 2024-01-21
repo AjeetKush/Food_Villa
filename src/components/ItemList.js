@@ -1,7 +1,19 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 import { CDN_URL } from "../utils/constants";
 
 const ItemList = ({ items }) => {
     // console.log(items);
+
+    const dispatch = useDispatch();// to read data from the store we have useSelector hook, similarly to dispatch we have useDespatch hook and this gives us dispatch and this dispatch is a function.
+
+    const handleAddItem = (item)=>{
+        // Dispatch an action on the click of this button
+        dispatch(addItem(item));// we dispatched this addItem action and whatever we put inside addItem, it will go inside my cart, ex:= addItem("pizza") this pizza is my action.payload
+                          
+    }
+
+
     return ( 
         // for each category, we have various Category Items
         
@@ -22,7 +34,9 @@ const ItemList = ({ items }) => {
 
                     <div className="w-3/12 p-4">
                           
-                          <button className="p-2 mx-20 rounded-lg bg-white shadow-lg absolute text-green-400 hover:shadow-lg shadow-gray-100"> ADD + </button>
+                          <button className="p-2 mx-20 rounded-lg bg-white shadow-lg absolute text-green-400 hover:shadow-lg shadow-gray-100"
+                          onClick={() => handleAddItem(item)}
+                          > ADD + </button>
                           <img src={CDN_URL + item.card.info.imageId}  alt="🎃🍛"/>
                     </div>
 
