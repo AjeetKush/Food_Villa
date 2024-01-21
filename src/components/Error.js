@@ -1,4 +1,4 @@
-import ErrorImage from "../images/ErrorImg.jpg";
+import ErrorImg from "../images/ErrorImg.jpg";
 import { useRouteError, Link } from "react-router-dom"; // import useRouteError for routing error
 
 const Error = () => {
@@ -7,7 +7,7 @@ const Error = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div>
-        <img src={ErrorImage} alt="Error Image" className="mb-8 mx-auto" />
+        <img src={ErrorImg} alt="Error Image" className="mb-8 mx-auto" />
         <h1 className="text-3xl font-bold text-gray-800 mb-4">
           Oops! The restaurant you're looking for can't be found.
         </h1>
