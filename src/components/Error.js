@@ -1,4 +1,4 @@
-import ErrorImage from "../Images/ErrorImg.jpg";
+import ErrorImage from "../images/ErrorImg.jpg";
 import { useRouteError, Link } from "react-router-dom"; // import useRouteError for routing error
 
 const Error = () => {
