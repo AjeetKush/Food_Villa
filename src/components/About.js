@@ -1,5 +1,5 @@
 import React from 'react';
-import food from '../Images/burger-image.png'; // Adjust the path based on your project structure
+import BurgerImage from '../images/burgerImage.png'; // Adjust the path based on your project structure
 
 const About = () => {
   return (
@@ -14,7 +14,7 @@ const About = () => {
         </h4>
       </div>
       <div className="md:w-1/2 mt-6 md:mt-0">
-        <img src={food} alt="Food Image" className="w-full h-auto rounded-lg shadow-md" />
+        <img src={BurgerImage} alt="Food Image" className="w-full h-auto rounded-lg shadow-md" />
       </div>
     </div>
   );
