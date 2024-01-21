@@ -12,7 +12,7 @@ const Contact = () => {
   return (
     <div className="flex flex-col md:flex-row items-center justify-center py-16 px-8 bg-gray-100">
       <div className="md:w-1/2 mr-6">
-        <img src={contact} alt="Contact Us" className="w-full h-auto rounded-lg shadow-md" />
+        <img src={Contact} alt="Contact Us" className="w-full h-auto rounded-lg shadow-md" />
       </div>
       <div className="md:w-1/2">
         <div className="text-center md:text-left mb-8">
