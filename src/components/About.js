@@ -1,5 +1,5 @@
 import React from 'react';
-import BurgerImage from '../images/BurgerImage.png'; // Adjust the path based on your project structure
+import BurgerImage from "../images/BurgerImage.png"; // Adjust the path based on your project structure
 
 const About = () => {
   return (

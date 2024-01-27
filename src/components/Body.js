@@ -22,36 +22,48 @@ const Body = () => {
         fetchData();
     }, []);
     
-    const fetchData = async () => {
+    // const fetchData = async () => {
 
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");// this fetch will fetch the data from the API, fetch returns a promise and to resolve a promise we will use Async - Await here.... hum .then .catch use kar sakte the... but hum wo use nahi karenge...
+    //     const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");// this fetch will fetch the data from the API, fetch returns a promise and to resolve a promise we will use Async - Await here.... hum .then .catch use kar sakte the... but hum wo use nahi karenge...
 
-        // once we have the data we want to convert that data to JSON.
+    //     // once we have the data we want to convert that data to JSON.
 
-        const json = await data.json();
+    //     const json = await data.json();
 
-        //console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    //     //console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
-        setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    //     setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    //     setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
      
 
         
+    // }
+
+    const fetchData = async () => {
+    try {
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const json = await data.json();
+        setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        // Handle the error, show a message, or set a state indicating an error.
     }
+};
+
 
    
     const onlineStatus = useOnlineStatus();
 
     
 
-    if (onlineStatus === false) {
-    return (
-      <h1>
-        Looks like you're offline!! Please check your internet connection;
-      </h1>
-     );
-     
-    }
+ if (onlineStatus === false) {
+   return (
+      <div>
+         <h1>Looks like you're offline!! Please check your internet connection;</h1>
+      </div>
+   );
+}
     
     
 
