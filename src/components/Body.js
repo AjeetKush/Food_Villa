@@ -39,17 +39,22 @@ const Body = () => {
         
     // }
 
-    const fetchData = async () => {
-    try {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+const fetchData = async () => {
+      try {
+        const proxyUrl = "https://proxy.cors.sh/";
+        const apiUrl = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+    
+        const data = await fetch(proxyUrl + apiUrl);
         const json = await data.json();
+        console.log(json);
+    
         setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    } catch (error) {
+      } catch (error) {
         console.error("Error fetching data:", error);
         // Handle the error, show a message, or set a state indicating an error.
-    }
-};
+      }
+    };
 
 
    
